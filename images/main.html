@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Page</title>
+		<meta http-equiv="refresh" content="300">
+		<meta name="viewport" content="initial-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="jquery.mobile-1.3.1.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	</head>
+	<body>
+
+		<div data-role="page" id="homepage">
+
+			<div data-role="header" data-position="fixed">
+				<h1>POSSIBILITY</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">
+				<div id="regis" style=" display:none; position: fixed; top: 50px; text-align: center; width: 80%; padding: 10px; z-index: 9999;
+				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ebf1f6+0,abd3ee+50,89c3eb+51,d5ebfb+100;Blue+Gloss+%234 */
+				background: #ebf1f6; /* Old browsers */
+				background: -moz-linear-gradient(top,  #ebf1f6 0%, #abd3ee 50%, #89c3eb 51%, #d5ebfb 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(51%,#89c3eb), color-stop(100%,#d5ebfb)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#89c3eb 51%,#d5ebfb 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#89c3eb 51%,#d5ebfb 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#89c3eb 51%,#d5ebfb 100%); /* IE10+ */
+				background: linear-gradient(to bottom,  #ebf1f6 0%,#abd3ee 50%,#89c3eb 51%,#d5ebfb 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 ); /* IE6-9 */
+
+				">
+					<form>
+						<label style="font-weight: bolder;">Introduce Yourself</label>
+						<br />
+						<label for="urname">Fullname</label>
+						<input id="urname" type="text" name="urname"  />
+						<label for="urnum">Mobile number</label>
+						<input id="urnum" type="text" name="urnum"  />
+						<label for="ururloc">Location</label>
+						<input id="urloc" type="text" name="urloc"  />
+						<input id="savedet" type="button" value="SEND" />
+					</form>
+
+				</div>
+				<div style="padding: 2px;background-color: #202020 ;font-family: serif; text-align: center;margin-top: -20px;margin-right: -20px; margin-left: -20px;">
+					<h2 style="color: lime;"> Voice Of Possibilty <h4 style="color:orange">Where Christ makes everybody a possibility</h4>
+				</div>
+				<div style="margin-top: 5px;" id="imgpaste"></div>
+				<ul data-role="listview" data-inset="true">
+					<li data-role="list-divider">
+						Welcome
+					</li>
+					<li>
+						<a href="#thisweek"  data-transition='flip'>This Weeks Message</a>
+					</li>
+					<li>
+						<a href="#previousmsg"  data-transition='flip'>Previous Messages</a>
+					</li>
+					<!-- <li>
+					<a href="#prayertopic"  data-transition='flip'>Prayer Topic</a>
+					</li> -->
+					<li>
+						<a href="#previousprayer"  data-transition='flip'>Weekly Prayer Topics</a>
+					</li>
+					<li>
+						<a href="#readers">Weeks Readers</a>
+					</li>
+					<li>
+						<a href="#announcement">Announcements</a>
+					</li>
+					<li>
+						<a href="#questions">VoP Response</a>
+					</li>
+				</ul>
+				<div style="margin-bottom: 50px;background: #F8F8F8; padding: 10px; text-align: center;" data-role="popup" id="ttu" class="modalDialog">
+					<!-- <a href="#close" title="Close" class="close" style="position: fixed; right: 10px; padding: 3px; background: silver;">X</a> -->
+					<form>
+						<label style="font-weight: bolder;">Tell Us</label>
+						<textarea id="tellus" name="tellus" rows="60" cols="20"></textarea>
+						<input id="btntellus" type="button" value="SEND" />
+					</form>
+				</div>
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#gallery" data-icon="camera" class="ui-btn-active ui-state-persist">Gallery</a>
+						</li>
+						<li>
+							<a href="#ttu" data-icon="edit"  data-rel='popup' data-transition='slideup' data-icon="edit" id="" class="modalDialog">Talk To Us</a>
+						</li>
+						<!-- <li>
+						<a href="#" data-icon="check">Button 3</a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+
+		</div><!-- /page -->
+		<div data-role="page" id="gallery">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-role="button" data-transition="slide">Back</a>
+				<h1>GALLERY</h1>
+			</div><!-- /header -->
+
+			<div data-role="content" id="gal">
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed"></div>
+
+		</div><!-- /page1.3 -->
+		<div data-role="page" id="questions">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-role="button" data-transition="slide">Back</a>
+				<h1>RESPONSES</h1>
+			</div><!-- /header -->
+
+			<div data-role="content" id="presponses">
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed"></div>
+
+		</div><!-- /page1.5 -->
+
+		<div data-role="page" id="thisweek">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-transition='flip' data-role="button">Back</a>
+				<h1>This Week</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">
+				<div id="passage" style="min-height:100%;  padding: 5px;background-color: #EDFFFF ;font-family: serif; text-align: justify; "></div>
+
+				<div style="background: #F8F8F8; padding: 10px; text-align: center;" data-role="popup" id="viewsdiv" class="modalDialog">
+					<!-- <a href="#close" title="Close" class="close" style="position: fixed; right: 10px; padding: 3px; background: silver;">X</a> -->
+					<form>
+						<label>Your view</label>
+						<div id="othfrm">
+
+						</div>
+						<input id="amen" type="button" value="AMEN" />
+					</form>
+				</div>
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#viewsdiv" data-rel='popup' data-transition='slideup' data-icon="edit" id="" class="modalDialog">Your Views</a>
+						</li>
+						<!-- <li>
+						<a href="#" data-icon="check">Button 3</a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+
+		</div><!-- /page2 -->
+		<div data-role="page" id="previousmsg">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-role="button" data-transition="slide">Back</a>
+				<h1>ARCHIVE</h1>
+			</div><!-- /header -->
+
+			<div data-role="content" id="old">
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed"></div>
+
+		</div><!-- /page3 -->
+
+		<div data-role="page" id="announcement">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-role="button" data-transition="slide">Back</a>
+				<h1>NOTICE</h1>
+			</div><!-- /header -->
+
+			<div data-role="content" id="announce">
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed"></div>
+
+		</div><!-- /page5 -->
+		<div data-role="page" id="readers">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-role="button" data-transition="slide">Back</a>
+				<h1>READERS</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">
+				<div id="read">
+				  
+				</div>
+				<!-- <ul data-role="listview" data-filter="true" data-input="#filterBasic-input"  id="read"></ul> -->
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed"></div>
+
+		</div><!-- /page4 -->
+		<div data-role="page" id="prayertopic">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-transition='flip' data-role="button">Back</a>
+				<h1>This Week</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">
+				<div id="prayer" style="min-height:100%;  padding: 5px;background-color: #EDFFFF ;font-family: serif; text-align: justify; "></div>
+
+				<div style="background: #F8F8F8; padding: 10px; text-align: center;" data-role="popup" id="viewsdiv" class="modalDialog">
+					<!-- <a href="#close" title="Close" class="close" style="position: fixed; right: 10px; padding: 3px; background: silver;">X</a> -->
+					<form>
+						<label>Your view</label>
+						<div id="othfrmm">
+
+						</div>
+						<input id="amenn" type="button" value="AMEN" />
+					</form>
+				</div>
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed">
+				</ul>
+			</div>
+
+		</div>
+
+		</div><!-- /page5 -->
+		<div data-role="page" id="previousprayer">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-role="button" data-transition="slide">Back</a>
+				<h1>ARCHIVE</h1>
+			</div><!-- /header -->
+
+			<div data-role="content" id="oldprayer">
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed"></div>
+
+		</div><!-- /page6 -->
+
+		<script>
+			$("#savedet").click(function() {
+				var name = $("#urname").val();
+				var num = $("#urnum").val();
+				var loc = $("#urloc").val();
+				localStorage.setItem("yourname", name);
+				localStorage.setItem("yournum", num);
+				localStorage.setItem("yourloc", loc);
+				$("#regis").slideUp('fast');
+			});
+
+		</script>
+		<script>
+			var number = localStorage.getItem("yournum");
+			if (number == null) {
+				$("#regis").slideDown('fast');
+			};
+		</script>
+		<script>
+			$.get('http://sms.nalosolutions.com/nalosms/gallery.php', function(data, status) {
+				if (status == 'success') {
+					$("#gal").html(data);
+				} else {
+					alert("Check your internet connectivity");
+				};
+
+			});
+		</script>
+		<script>
+			$.get('http://sms.nalosolutions.com/nalosms/img.php', function(data, status) {
+				if (status == 'success') {
+					$("#imgpaste").html(data);
+				} else {
+					alert("Check your internet connectivity");
+				};
+
+			});
+		</script>
+		<script>
+			$("#btntellus").click(function() {
+				var views = $("#tellus").val() + "                                                                                                                                 ";
+				if (views == '') {
+					alert("We couldnt hear you, please try again.");
+					return false;
+				};
+				$.post('http://sms.nalosolutions.com/nalosms/tellus.php', {
+					tell : views,
+					// inspiration : $("#inspire").val()
+				}, function(data, status) {
+					if (status == 'success') {
+						alert(data);
+						$("#tellus").val() = '';
+						$("#ttu").hide();
+					} else {
+						alert("Check your internet connectivity");
+					};
+
+				});
+
+			});
+		</script>
+		<script>
+			$.get('http://sms.nalosolutions.com/nalosms/presponse.php', function(data, status) {
+				if (status == 'success') {
+					$("#presponses").html(data);
+				} else {
+					alert("Check your internet connectivity");
+				};
+
+			});
+		</script>
+		<script>
+			$.get('http://sms.nalosolutions.com/nalosms/archiveprayer.php', function(data, status) {
+				if (status == 'success') {
+					$("#oldprayer").html(data);
+				} else {
+					alert("Check your internet connectivity");
+				};
+
+			});
+		</script>
+		<script>
+			$.get('http://sms.nalosolutions.com/nalosms/prayer.php', function(data, status) {
+				if (status == 'success') {
+					$("#prayer").html(data);
+				} else {
+					$("#prayer").html("Check your internet connectivity");
+				};
+
+			});
+
+		</script>
+		<script>
+			$.get('http://sms.nalosolutions.com/nalosms/thisweek.php', function(data, status) {
+				if (status == 'success') {
+					$("#passage").html(data);
+				} else {
+					$("#passage").html("Check your internet connectivity");
+				};
+
+			});
+
+		</script>
+		<script>
+			$("#amen").click(function() {
+				alert(done);
+				var views = $("#view").val();
+				var name = localStorage.getItem("yourname", name);
+				var num = localStorage.getItem("yournum", num);
+				var loc = localStorage.getItem("yourloc", loc);
+
+				var $inspire = $("#inspire").val();
+				if (views == '') {
+					alert("Kindly share your views on the passage");
+					return false;
+				};
+				$.post('http://sms.nalosolutions.com/nalosms/views.php', {
+					view : $("#view").val(),
+					name : name,
+					num : num,
+					loc : loc,
+					inspiration : $("#inspire").val()
+				}, function(data, status) {
+					if (status == 'success') {
+						alert(data);
+						$("#viewsdiv").hide();
+					} else {
+						alert("Check your internet connectivity");
+					};
+
+				});
+
+			});
+		</script>
+		<script>
+			$.get('http://sms.nalosolutions.com/nalosms/archive.php', function(data, status) {
+				if (status == 'success') {
+					$("#old").html(data);
+				} else {
+					alert("Check your internet connectivity");
+				};
+
+			});
+		</script>
+		<script>
+			$.get('http://sms.nalosolutions.com/nalosms/announce.php', function(data, status) {
+				if (status == 'success') {
+					$("#announce").html(data);
+				} else {
+					alert("Check your internet connectivity");
+				};
+
+			});
+		</script>
+		<script>
+			$.get('http://sms.nalosolutions.com/nalosms/yourview.php', function(data, status) {
+				if (status == 'success') {
+					$("#othfrm").html(data);
+				} else {
+					alert("Check your internet connectivity");
+				};
+
+			});
+		</script>
+		<script>
+			$.get('http://sms.nalosolutions.com/nalosms/readers.php', function(data, status) {
+				if (status == 'success') {
+					$("#read").html(data);
+				} else {
+					alert("Check your internet connectivity");
+				};
+
+			});
+		</script>
+	</body>
+</html>

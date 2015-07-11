@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Page</title>
+		<meta http-equiv="refresh" content="300">
+		<meta name="viewport" content="initial-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="jquery.mobile-1.3.1.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	</head>
+	<body>
+
+		<div data-role="page" id="login">
+
+			<div data-role="header" data-position="fixed">
+				<h1>LOGIN</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">
+				<div style="width: 100%; text-align: center">
+					<div id="display" class="display" style="padding: 10px;background:skyblue;color:white;text-align: center;text-shadow: none;
+					font-weight:bolder;width:83%;position: absolute;top: 45%; left:0px;margin: 5%;z-index: 80px;display:none;border:1px solid gray;"></div>
+					<label for="username" style="text-align: center">Username</label>
+					<input type="text" name="username" value="" id="txtusername" data-mini='true'/>
+					<label for="password" style="text-align: center">Password</label>
+					<input type="password" name="password" value="" id="txtpassword" data-mini='true'/>
+					<button type="submit" name="btnlogin"  data-mini='true' id="btnlogin" onclick="Login()" style="border-left: 1px solid skyblue; background: #3388cc; text-shadow: none;">
+						LOGIN
+					</button>
+				</div>
+
+			</div><!-- /content -->
+
+		</div><!-- /page -->
+	</body>
+</html>
+<script>
+	function Login() {
+		$("#display").html('Processing...');
+		$("#display").show();
+		var id = $('#txtusername').val();
+		var pass = $('#txtpassword').val();
+
+		if (id == '' || pass == '') {
+			$("#display").html('All fields required');
+			$("#display").css('color', 'red');
+			$("#display").fadeOut(8000);
+		} else {
+
+			var creds = id + '|' + pass;
+			$.ajax({
+				url : 'http://216.224.161.207/nalocollector/loginval.php',
+				type : 'POST',
+				data : {
+					username : id,
+					pass : pass
+				},
+				success : function(response) {
+					if (response == true) {
+						$("#display").hide();
+						localStorage.setItem("creds", creds);
+						window.location = 'home.html';
+					} else {
+						// alert(data);
+						$("#display").html('Invalid credentials');
+						$("#display").css('color', 'red');
+						$("#display").fadeIn();
+						$("#display").fadeOut(8000);
+
+					};
+				},
+				error : function() {
+					alert('Offline Mode activated. Payments will be stored temporarily');
+					var stored_creds = localStorage.getItem("creds");
+					if (stored_creds == creds) {
+						window.location = 'home.html';
+					} else {
+						// alert(data);
+						$("#display").html('Invalid credentials');
+						$("#display").css('color', 'red');
+						$("#display").fadeIn();
+						$("#display").fadeOut(8000);
+
+					};
+
+				}
+			});
+		}
+	}
+</script>

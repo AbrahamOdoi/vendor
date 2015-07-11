@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Page</title>
+		<meta http-equiv="refresh" content="300">
+		<meta name="viewport" content="initial-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="jquery.mobile-1.3.1.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	</head>
+	<body>
+		<div data-role="page" id="cpanel">
+
+			<div data-role="header" data-position="fixed">
+				<h1>C-PANEL</h1>
+			</div><!-- /header -->
+			<div data-role="content" class="ui-content">
+				<div>
+					<table border="0" cellspacing="30" cellpadding="5" width="100%" height="200px">
+						<tr align="center">
+							<td><a href="#newClient" data-transition='flip' style="font-weight: lighter;color: black; text-decoration: none;" ><i class="fa fa-user fa-3x"></i>
+							<br/>
+							new </a></td>
+							<td><a href="#newPayment" id="npbtn" data-transition='slidedown' style="font-weight: lighter;color: black; text-decoration: none;"><i class="fa fa-money fa-3x"></i>
+							<br/>
+							payment</a></td>
+						</tr>
+						<tr align="center">
+							<td><a href="#searchClient" id='fetchmyclient' data-transition='turn' style="font-weight: lighter;color: black; text-decoration: none;"><i class="fa fa-search fa-3x"></i>
+							<br/>
+							search</a></td>
+							<td><a href="main.html" rel="external" data-transition='flow' style="font-weight: lighter;color: black; text-decoration: none;"><i class="fa fa-sign-out fa-3x" style="color: pink"></i>
+							<br/>
+							signout</a></td>
+						</tr>
+
+					</table>
+
+				</div>
+			</div><!-- /content -->
+
+		</div>
+
+		<div data-role="page" id="newClient">
+			<!-- Header -->
+			<div data-role="header" data-position='fixed' data-add-back-btn="true">
+				<a href="#cpanel" data-transition='flip' data-role="button">Back</a>
+				<h1>NEW CIENT</h1>
+
+			</div>
+			<!-- /header -->
+			<!-- Content    -->
+			<div data-role="content">
+				<div>
+					<div id="display" class="display" style="padding: 10px;background:skyblue;color:white;text-align: center;text-shadow: none;
+					font-weight:bolder;width:83%;position: fixed;bottom: 30%; left:0px;margin: 5%;z-index: 80px;display:none;border:1px solid gray;"></div>
+
+					<label for="username" style="text-align: center">Client Name</label>
+					<input type="text" name="clientName" value="" id="clientName" data-mini='true'  placeholder="Abraham Odoi Nii Laryea"/>
+
+					<label for="password" style="text-align: center">Gender</label>
+					<select name="clientGender" id="clientGender" data-mini='true' >
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+					</select>
+
+					<label for="mobile" style="text-align: center">Mobile</label>
+					<input type="text" name="mobile" value="" id="clientMobile" data-mini='true'  placeholder="233000000000"/>
+
+					<label for="hseNumber" style="text-align: center">House Number</label>
+					<input type="text" name="hseNumber" value="" id="clienthseNumber" data-mini='true'  placeholder="G234/6"/>
+
+					<label for="serviceType" style="text-align: center">Service Type</label>
+					<select name="clientServiceType" id="clientServiceType" data-mini='true' >
+						<option value="HH">HH</option>
+						<option value="Co">Co</option>
+					</select>
+
+					<label for="bins" style="text-align: center">Bins</label>
+					<input type="number" name="bins" value="" id="clientBins" data-mini='true'  placeholder=""/>
+
+					<label for="amount" style="text-align: center">Amount</label>
+					<input type="number" name="amount" value="" id="clientAmount" data-mini='true'  placeholder=""/>
+
+					<label for="mobile" style="text-align: center">Location</label>
+					<input type="text" name="location" value="" id="clientLocation" data-mini='true'  placeholder="C11" maxlength="3"/>
+
+					<label for="cluster" style="text-align: center">Cluster</label>
+					<input type="number" name="cluster" value="" id="clientCluster" data-mini='true'  placeholder="01" maxlength="2"/>
+
+					<label for="clientID" style="text-align: center">Client ID</label>
+					<input type="text" name="clientID" style="text-align: center; color: red"  value="" id="clientID" disabled='disabled' />
+
+					<button name="btnnewClient"  data-mini='true' onclick="newClient()" style="border-left: 1px solid skyblue; background: #3388cc; color:white; text-shadow: none;">
+						PROCEED
+					</button>
+					<!-- </form> -->
+				</div>
+			</div>
+			<!-- /content -->
+			<!-- footer -->
+			<div data-role="footer" data-position='fixed'>
+				<h4>&copy; NALO</h4>
+			</div>
+			<!-- /footer -->
+		</div>
+		<!-- /page -->
+
+		<div data-role="page" id="newPayment">
+			<!-- Header -->
+			<div data-role="header" data-position='fixed' data-add-back-btn="true">
+				<h1>PAYMENT</h1>
+			</div>
+			<!-- /header -->
+			<!-- Content    -->
+			<div data-role="content">
+				<div>
+					<div id="paydisplay" class="display" style="padding: 10px;background:skyblue;color:white;text-align: center;text-shadow: none;
+					font-weight:bolder;width:83%;position: absolute;top: 5%; left:0px;margin: 5%;z-index: 9999px;display:none;border:1px solid gray;"></div>
+					<!-- <form action="" method="post"> -->
+					<label for="paymentClient" style="text-align: center">Client ID</label>
+					<input type="text" name="paymentClient" onkeyup="fetchuser()" value="" id="paymentClient"  placeholder="ZL0000000" style="z-index: 88"/>
+
+					<label for="mobile" style="text-align: center">Client Name</label>
+					<input type="text" name="paymentClientN" value="" disabled='disabled'  id="paymentClientN" data-mini='true'  />
+
+					<label for="paymentType" style="text-align: center">Type</label>
+					<select name="paymentType" id="paymentType" data-mini='true' >
+						<option value="Cash">Cash</option>
+						<option value="Cheque">Cheque</option>
+						<option value="Mobilemoney">Mobilemoney</option>
+					</select>
+
+					<input type="text" name="chequeNumber" value="" class="extrafield" placeholder="Cheque Number" id="chequeNumber" data-mini='true'  style="display: none;" />
+
+					<input type="text" name="MobilemoneyNumber" class="extrafield" value="" placeholder="Mobilemoney Number" id="MobilemoneyNumber" data-mini='true'  style="display: none;" />
+
+					<label for="paymentAmount" style="text-align: center">Amount GHc</label>
+					<input type="text" name="paymentAmount" value="" id="paymentAmount" data-mini='true'  placeholder="100000"/>
+
+					<label for="receivedOn" style="text-align: center">Received On</label>
+					<input type="text" name="receivedOn" value="" disabled='disabled' id="receivedOn" data-mini='true'  />
+
+					<label for="receivedBy" style="text-align: center">Received by</label>
+					<input type="text" name="receivedBy" value="" disabled='disabled' id="receivedBy" data-mini='true'  />
+					<button name="btnnewPayment" id="btnnewPayment"  data-mini='true' style="border-left: 1px solid skyblue; background: #3388cc; color:white; text-shadow: none;">
+						PAY
+					</button>
+					<!-- </form> -->
+				</div>
+			</div>
+			<!-- /content -->
+			<!-- footer -->
+			<div data-role="footer" data-position='fixed'>
+				<h4>&copy; 2015 NALO</h4>
+			</div>
+			<!-- /footer -->
+		</div>
+		<!-- /page -->
+
+		<div data-role="page" id="questions">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-role="button" data-transition="slide">Back</a>
+				<h1>RESPONSES</h1>
+			</div><!-- /header -->
+
+			<div data-role="content" id="presponses">
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed"></div>
+
+		</div><!-- /page1.5 -->
+
+		<div data-role="page" id="thisweek">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-transition='flip' data-role="button">Back</a>
+				<h1>This Week</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">
+				<div id="passage" style="min-height:100%;  padding: 5px;background-color: #EDFFFF ;font-family: serif; text-align: justify; "></div>
+
+				<div style="background: #F8F8F8; padding: 10px; text-align: center;" data-role="popup" id="viewsdiv" class="modalDialog">
+					<!-- <a href="#close" title="Close" class="close" style="position: fixed; right: 10px; padding: 3px; background: silver;">X</a> -->
+					<form>
+						<label>Your view</label>
+						<div id="othfrm">
+
+						</div>
+						<input id="amen" type="button" value="AMEN" />
+					</form>
+				</div>
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#viewsdiv" data-rel='popup' data-transition='slideup' data-icon="edit" id="" class="modalDialog">Your Views</a>
+						</li>
+						<!-- <li>
+						<a href="#" data-icon="check">Button 3</a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+
+		</div><!-- /page2 -->
+		<div data-role="page" id="previousmsg">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-role="button" data-transition="slide">Back</a>
+				<h1>ARCHIVE</h1>
+			</div><!-- /header -->
+
+			<div data-role="content" id="old">
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed"></div>
+
+		</div><!-- /page3 -->
+
+		<div data-role="page" id="announcement">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-role="button" data-transition="slide">Back</a>
+				<h1>NOTICE</h1>
+			</div><!-- /header -->
+
+			<div data-role="content" id="announce">
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed"></div>
+
+		</div><!-- /page5 -->
+
+		<div data-role="page" id="searchClient">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#cpanel" data-role="button" data-transition="slide">Back</a>
+				<h1>CLIENTS</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">
+				<div id="read">
+
+				</div>
+				<!-- <ul data-role="listview" data-filter="true" data-input="#filterBasic-input"  id="read"></ul> -->
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed"></div>
+
+		</div><!-- /page4 -->
+		<div data-role="page" id="prayertopic">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-transition='flip' data-role="button">Back</a>
+				<h1>This Week</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">
+				<div id="prayer" style="min-height:100%;  padding: 5px;background-color: #EDFFFF ;font-family: serif; text-align: justify; "></div>
+
+				<div style="background: #F8F8F8; padding: 10px; text-align: center;" data-role="popup" id="viewsdiv" class="modalDialog">
+
+				</div>
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed">
+				</ul>
+			</div>
+
+		</div>
+
+		</div><!-- /page5 -->
+		<div data-role="page" id="previousprayer">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#homepage" data-role="button" data-transition="slide">Back</a>
+				<h1>ARCHIVE</h1>
+			</div><!-- /header -->
+
+			<div data-role="content" id="oldprayer">
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed"></div>
+
+		</div><!-- /page6 -->
+
+	</body>
+</html>
+<script>
+	function setReceiveTime() {
+		var currentDate = new Date()
+		var day = currentDate.getDate()
+		var month = currentDate.getMonth() + 1
+		var year = currentDate.getFullYear()
+		var currentTime = new Date()
+		var hours = currentTime.getHours()
+		var minutes = currentTime.getMinutes()
+		var second = currentTime.getSeconds()
+
+		if (month < 10)
+			month = "0" + month
+		if (day < 10)
+			day = "0" + day
+		if (hours < 10)
+			hours = "0" + hours
+		if (minutes < 10)
+			minutes = "0" + minutes
+		if (second < 10)
+			second = "0" + second
+
+		var now = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + second
+		$('#receivedOn').val(now)
+
+		var creds = localStorage.getItem("creds");
+		var res = creds.split("|");
+		var username = res[0];
+
+		$('#receivedBy').val(username)
+	}
+</script>
+<script>
+	$('#npbtn').click(function() {
+		setReceiveTime();
+	}); 
+</script>
+<script>
+	$('#btnnewPayment').click(function() {
+		$("#paydisplay").html('Processing...');
+		$("#paydisplay").fadeIn();
+		setReceiveTime();
+		var clientid = $('#paymentClient').val();
+		var ptype = $('#paymentType').val();
+		var chequeNumber = $('#chequeNumber').val();
+		var mmNumber = $('#mmNumber').val();
+		var amt = $('#paymentAmount').val();
+		var receivedOn = $('#receivedOn').val();
+		var receivedBy = $('#receivedBy').val();
+
+		if (!chequeNumber) {
+			chequeNumber = '-'
+		}
+
+		if (!mmNumber) {
+			mmNumber = '-'
+		}
+
+		if (paymentClient == '' || paymentType == '' || paymentAmount == '') {
+			$("#paydisplay").html('All fields required');
+			$("#paydisplay").css('color', 'red');
+			$("#paydisplay").fadeOut(8000);
+		} else {
+			var store = clientid + '|' + ptype + '|' + chequeNumber + '|' + mmNumber + '|' + amt + '|' + receivedBy
+			var paystring = store + '***';
+			$.ajax({
+				url : 'http://216.224.161.207/nalocollector/syncpayments.php',
+				type : 'POST',
+				data : {
+					paystring : paystring
+				},
+				success : function(response) {//SYNC TO SERVER
+					var resp_string = response.split("|");
+					var successs = resp_string[0];
+					var errorr = resp_string[1];
+					var alertt = successs + ' payments successfully uploaded, ' + errorr + ' payments failed.';
+					// $("#paydisplay").html(successs + ' payments successfully uploaded, ' + errorr + ' payments failed.');
+					$("#paydisplay").html('Completed');
+					$("#paydisplay").css('color', 'red');
+					$("#paydisplay").fadeIn();
+					$("#paydisplay").fadeOut(9000);
+					alert(alertt);
+
+				},
+				error : function() {//STORE IN LOCAL STORAGE
+					var oldpay = localStorage.getItem("payment");
+
+					if (oldpay) {
+						localStorage.setItem("payment", oldpay + '***' + store);
+					} else {
+						localStorage.setItem("payment", store);
+					}
+					var newpay = localStorage.getItem("payment");
+					alert('Transaction stored successfully');
+
+				}
+			});
+
+		}
+
+	});
+
+</script>
+<script>
+	//Login Attempt
+	function newClient() {
+		$("#display").html('Processing...');
+		$("#display").show();
+		var name = $('#clientName').val();
+		var gender = $('#clientGender').val();
+		var mobile = $('#clientMobile').val();
+		var hseNumber = $('#clienthseNumber').val();
+		var service = $('#clientServiceType').val();
+		var bins = $('#clientBins').val();
+		var amount = $('#clientAmount').val();
+		var location = $('#clientLocation').val();
+		var cluster = $('#clientCluster').val();
+		var id = $('#clientID').val();
+
+		if (name == '' || gender == '' || mobile == '' || hseNumber == '' || service == '' || bins == '' || amount == '' || location == '' || cluster == '') {
+			$("#display").html('All fields required');
+			$("#display").css('color', 'red');
+			$("#display").fadeOut(8000);
+		} else {
+			$.post("newClient.php", {
+				clientName : name,
+				clientGender : gender,
+				clientMobile : mobile,
+				clientHseNumber : hseNumber,
+				clientService : service,
+				clientBins : bins,
+				clientAmount : amount,
+				clientLocation : location,
+				clientCluster : cluster,
+				id : id
+			}, function(data) {
+
+				// if (data == '1') {
+				$("#display").html('Client Added Successfully');
+
+				$('#clientName').val('');
+				$('#clientGender').val('');
+				$('#clientMobile').val('');
+				$('#clientLocation').val('');
+				$('#clienthseNumber').val('');
+				$('#clientBins').val('');
+				$('#clientAmount').val('');
+				$('#clientCluster').val('');
+
+				$("#display").fadeIn();
+				$("#display").fadeOut(4000, function() {
+					window.location = 'main.php';
+				});
+
+			});
+		}
+	}
+
+</script>
