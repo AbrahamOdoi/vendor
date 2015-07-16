@@ -251,7 +251,7 @@
 			</div><!-- /header -->
 
 			<div data-role="content">
-				<div id="read">
+				<div id="searchdisplay">
 
 				</div>
 				<!-- <ul data-role="listview" data-filter="true" data-input="#filterBasic-input"  id="read"></ul> -->
@@ -371,10 +371,13 @@
 					paystring : paystring
 				},
 				success : function(response) {//SYNC TO SERVER
+					// alert(response);
 					var resp_string = response.split("|");
 					var successs = resp_string[0];
 					var errorr = resp_string[1];
-					var alertt = successs + ' payments successfully uploaded, ' + errorr + ' payments failed.';
+					alert(successs);
+					alert(errorr);
+					var alertt = successs + ' payment(s) successfully uploaded, ' + errorr + ' payments failed.';
 					// $("#paydisplay").html(successs + ' payments successfully uploaded, ' + errorr + ' payments failed.');
 					$("#paydisplay").html('Completed');
 					$("#paydisplay").css('color', 'red');
@@ -392,7 +395,9 @@
 						localStorage.setItem("payment", store);
 					}
 					var newpay = localStorage.getItem("payment");
-					alert('Transaction stored successfully');
+					$("#paydisplay").html('Transaction stored successfully');
+					$("#paydisplay").css('color', 'green');
+					$("#paydisplay").fadeOut(9000);
 
 				}
 			});
@@ -404,6 +409,16 @@
 </script>
 <script>
 	//Login Attempt
+
+	var text = '';
+	var possible = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	for (var i = 0; i < 5; i++)
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+	var cid = 'ZL' + text;
+	$('#clientID').val(cid);
+
+	$('#receivedOn').val(now);
+
 	function newClient() {
 		$("#display").html('Processing...');
 		$("#display").show();
@@ -423,7 +438,7 @@
 			$("#display").css('color', 'red');
 			$("#display").fadeOut(8000);
 		} else {
-			$.post("newClient.php", {
+			$.post("http://216.224.161.207/nalocollector/newClient.php", {
 				clientName : name,
 				clientGender : gender,
 				clientMobile : mobile,
@@ -435,26 +450,101 @@
 				clientCluster : cluster,
 				id : id
 			}, function(data) {
+				if (data == true) {
+					$("#display").html('Client Added Successfully');
 
-				// if (data == '1') {
-				$("#display").html('Client Added Successfully');
+					$('#clientName').val('');
+					$('#clientGender').val('');
+					$('#clientMobile').val('');
+					$('#clientLocation').val('');
+					$('#clienthseNumber').val('');
+					$('#clientBins').val('');
+					$('#clientAmount').val('');
+					$('#clientCluster').val('');
 
-				$('#clientName').val('');
-				$('#clientGender').val('');
-				$('#clientMobile').val('');
-				$('#clientLocation').val('');
-				$('#clienthseNumber').val('');
-				$('#clientBins').val('');
-				$('#clientAmount').val('');
-				$('#clientCluster').val('');
+					$("#display").fadeIn();
+					$("#display").fadeOut(4000, function() {
+						location.reload();
+					});
 
-				$("#display").fadeIn();
-				$("#display").fadeOut(4000, function() {
-					window.location = 'main.php';
-				});
-
+					var text = '';
+					var possible = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+					for (var i = 0; i < 5; i++)
+						text += possible.charAt(Math.floor(Math.random() * possible.length));
+					var cid = 'ZL' + text;
+					$('#clientID').val(cid);
+				} else {
+					$("#display").fadeIn();
+					$("#display").html('Action Failed');
+				}
 			});
 		}
 	}
 
+</script>
+
+<script>
+	function uploadPayments() {
+
+		var paystring = localStorage.getItem("payment");
+		// alert('12'+paystring);
+		// document.write(paystring);
+		if (paystring != null) {
+			alert(paystring);
+			$.ajax({
+				url : 'http://216.224.161.207/nalocollector/syncpayments.php',
+				type : 'POST',
+				data : {
+					paystring : paystring
+				},
+				success : function(response) {
+
+					alert('Payment sync successful');
+					localStorage.removeItem('payment');
+					
+				},
+				error : function() {
+					alert('Paymet Sync failed due to poor internet connection');
+
+				}
+			});
+		} 
+
+	}
+
+	$(function() {
+		window.setInterval(function() {
+			uploadPayments();
+		}, 300000);
+	});
+
+</script>
+<!-- <script>
+$("#fetchmyclient").click(function() {
+var creds = localStorage.getItem("creds");
+$.ajax({
+url : 'http://216.224.161.207/nalocollector/allclients.php',
+type : 'POST',
+data : {
+agent : creds
+},
+success : function(response) {
+alert(response);
+$('#searchdisplay').html(response);
+},
+error : function() {
+alert('failed');
+
+}
+});
+});
+</script> -->
+<script>
+	$.get('http://sms.nalosolutions.com/nalosms/readers.php', function(data, status) {
+		if (status == 'success') {
+			$("#searchdisplay").html(data);
+		} else {
+			alert("Check your internet connectivity");
+		};
+	}); 
 </script>
