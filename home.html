@@ -463,7 +463,7 @@
 					$('#clientAmount').val('');
 					$('#clientCluster').val('');
 
-					$("#display").fadeIn();
+					$("#display").fadeIn(); 
 					$("#display").fadeOut(4000, function() {
 						location.reload();
 					});
@@ -517,32 +517,31 @@
 	});
 
 </script>
-<!-- <script>
-$("#fetchmyclient").click(function() {
-var creds = localStorage.getItem("creds");
-$.ajax({
-url : 'http://216.224.161.207/nalocollector/allclients.php',
-type : 'POST',
-data : {
-agent : creds
-},
-success : function(response) {
-alert(response);
-$('#searchdisplay').html(response);
-},
-error : function() {
-alert('failed');
+<script>
+	// $("#fetchmyclient").click(function() {
+		var creds = localStorage.getItem("creds");
+		$.ajax({
+			url : 'http://216.224.161.207/nalocollector/allclients.php',
+			type : 'POST',
+			data : {
+				agent : creds
+			},
+			success : function(response) {
+				$('#searchdisplay').html(response);
+			},
+			error : function() {
+				// alert('failed');
 
-}
-});
+			}
+		});
+	// }); 
+</script>
+<!-- <script>
+$.get('http://sms.nalosolutions.com/nalosms/readers.php', function(data, status) {
+if (status == 'success') {
+$("#searchdisplay").html(data);
+} else {
+alert("Check your internet connectivity");
+};
 });
 </script> -->
-<script>
-	$.get('http://sms.nalosolutions.com/nalosms/readers.php', function(data, status) {
-		if (status == 'success') {
-			$("#searchdisplay").html(data);
-		} else {
-			alert("Check your internet connectivity");
-		};
-	}); 
-</script>

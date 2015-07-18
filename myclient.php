@@ -1,12 +1,8 @@
 <?php
 
 require_once ('core/connection.php');
-// $con=mysqli_connect("168.144.175.52","nalo","msyWE546","mobile");
 
-$agent=$_POST['agent'];
-// exit;
-
-$query = "select * from readers ";
+$query = "select name from readers ";
 // $query = "select name from readers where readdate > DATE_SUB(CURDATE(),INTERVAL DAYOFWEEK(CURDATE())-2 DAY) ";
 $result = mysqli_query($con, $query);
 
