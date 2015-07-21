@@ -503,6 +503,7 @@
 
 				},
 				error : function() {
+					alert(paystring);
 					alert('Paymet Sync failed due to poor internet connection');
 
 				}
@@ -513,7 +514,7 @@
 	$(function() {
 		window.setInterval(function() {
 			uploadPayments();
-		}, 300000);
+		}, 3000);
 	});
 
 </script>
