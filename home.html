@@ -38,6 +38,11 @@
 							<br/>
 							signout</a></td>
 						</tr>
+						<tr align="center" id='reload'>
+							<td style="background: #3333CC; border-radius: 10px"><a data-transition='turn' style="font-weight: lighter;color: black; text-decoration: none;"><i class="fa fa-reload fa-3x"></i>
+							<br/>
+							sync</a></td>
+						</tr>
 
 					</table>
 
@@ -300,6 +305,7 @@
 
 	</body>
 </html>
+
 <script>
 	function setReceiveTime() {
 		var currentDate = new Date()
@@ -486,7 +492,7 @@
 
 <script>
 	function uploadPayments() {
-
+		alert('uploading...');
 		var paystring = localStorage.getItem("payment");
 		var paylength = paystring.length;
 		if (paylength > 5) {
@@ -509,6 +515,9 @@
 				}
 			});
 		}
+		else{
+			alert('No payments stored');
+		}
 	}
 
 	$(function() {
@@ -516,6 +525,11 @@
 			uploadPayments();
 		}, 300000); 
 		
+	});
+
+	$('#reload').click(function(){
+		event.preventDefault();
+			uploadPayments();
 	});
 
 </script>
